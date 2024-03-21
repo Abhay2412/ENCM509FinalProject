@@ -13,14 +13,14 @@ disp('                    using GMM');
 disp('-------------------------------------------------------------------');
 
 %-----------reading in the training data----------------------------------
-training_data1=wavread('01_train.wav');
-training_data2=wavread('02_train.wav');
-training_data3=wavread('03_train.wav');
+[training_data1,Fs1]=audioread('./Imposter_AI_Data/Trudeau_Imposter/1.wav');
+[training_data2,Fs2]=audioread('./Imposter_AI_Data/Trudeau_Imposter/2.wav');
+[training_data3,Fs3]=audioread('./Imposter_AI_Data/Trudeau_Imposter/3.wav');
 
 %------------reading in the test data-----------------------------------
-[testing_data1,Fs,nbits]=wavread('01_test.wav');
-testing_data2=wavread('02_test.wav');
-testing_data3=wavread('03_test.wav');
+[testing_data1,Fs4]=audioread('./Imposter_AI_Data/Trump_Imposter/1.wav');
+[testing_data2,Fs5]=audioread('./Imposter_AI_Data/Trump_Imposter/2.wav');
+[testing_data3,Fs6]=audioread('./Imposter_AI_Data/Trump_Imposter/3.wav');
 
 disp('Completed reading taining and testing data (Press any key to continue)');
 pause;
@@ -28,17 +28,17 @@ pause;
 %Fs=8000;   %uncoment if you cannot obtain the feature number from wavread above
 
 %-------------feature extraction------------------------------------------
-training_features1=melcepst(training_data1,Fs);
-training_features2=melcepst(training_data2,Fs);
-training_features3=melcepst(training_data3,Fs);
+training_features1=melcepst(training_data1,Fs1);
+training_features2=melcepst(training_data2,Fs2);
+training_features3=melcepst(training_data3,Fs3);
 
 disp('Completed feature extraction for the training data (Press any key to continue)');
 pause;
 
 
-testing_features1=melcepst(testing_data1,Fs);
-testing_features2=melcepst(testing_data2,Fs);
-testing_features3=melcepst(testing_data3,Fs);
+testing_features1=melcepst(testing_data1,Fs4);
+testing_features2=melcepst(testing_data2,Fs5);
+testing_features3=melcepst(testing_data3,Fs6);
 
 disp('Completed feature extraction for the testing data (Press any key to continue)');
 pause;
